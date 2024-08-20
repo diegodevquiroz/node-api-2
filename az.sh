@@ -87,9 +87,12 @@ main() {
 #   echo "Subscription ID: $subscriptionId"
 #   echo "Tenant ID: $tenantId"
 #   echo "Client ID: $clientId"
-    az login
-    get_subscription_id
-    az ad sp create-for-rbac --name "github-action-sp" --role contributor --scopes /subscriptions/$subscriptionId
+    #az login
+    az ad app federated-credential create --id 143bf878-5f76-4280-b04b-642fdd558ca9 \
+    --parameters "{\"name\":\"GitHubActions\",\"issuer\":\"https://token.actions.githubusercontent.com\",\"subject\":\"repo:diegoquirozramirez/node-api-2:ref:refs/heads/main\",\"audiences\":[\"api://AzureADTokenExchange\"]}"
+
+    #get_subscription_id
+    #az ad sp create-for-rbac --name "github-action-sp" --role contributor --scopes /subscriptions/$subscriptionId
 
 }
 
