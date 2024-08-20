@@ -70,23 +70,27 @@ setup_azure_resources() {
 
 # Main function
 main() {
-  # Set up Azure resources
-  setup_azure_resources 'group003' 'eastus' 'plan003' 'appname03' 'NODE|18-lts'
+#   # Set up Azure resources
+#   setup_azure_resources 'group003' 'eastus' 'plan003' 'appname03' 'NODE|18-lts'
  
-  # Fetch the Subscription ID
-  get_subscription_id
+#   # Fetch the Subscription ID
+#   get_subscription_id
 
-  # Fetch the Tenant ID
-  get_tenant_id
+#   # Fetch the Tenant ID
+#   get_tenant_id
 
-  # Fetch the Client ID for a specific app
-  app_name="appmentoria1"
-  get_client_id "$app_name"
+#   # Fetch the Client ID for a specific app
+#   app_name="appmentoria1"
+#   get_client_id "$app_name"
 
-  echo "All IDs and resources created successfully!"
-  echo "Subscription ID: $subscriptionId"
-  echo "Tenant ID: $tenantId"
-  echo "Client ID: $clientId"
+#   echo "All IDs and resources created successfully!"
+#   echo "Subscription ID: $subscriptionId"
+#   echo "Tenant ID: $tenantId"
+#   echo "Client ID: $clientId"
+    az login
+    get_subscription_id
+    az ad sp create-for-rbac --name "github-action-sp" --role contributor --scopes /subscriptions/$subscriptionId
+
 }
 
 # Execute the main function
