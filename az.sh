@@ -73,52 +73,31 @@ setup_azure_resources() {
     #Comentar linea si ya se hubo autenticacion a nivel de consola o terminal
     az login
 
-    echo "Creating Resource Group..."
-    #Comentar linea si no se desea crear un grupo de recursos
-    az group create --name $group --location $location
+    # echo "Creating Resource Group..."
+    # #Comentar linea si no se desea crear un grupo de recursos
+    # az group create --name $group --location $location
 
-    echo "Creating App Service Plan..."
-    #Comentar la linea si no se desea crear un App Service Plan
-    az appservice plan create --name $plan --resource-group $group --sku B1 --is-linux
+    # echo "Creating App Service Plan..."
+    # #Comentar la linea si no se desea crear un App Service Plan
+    # az appservice plan create --name $plan --resource-group $group --sku B1 --is-linux
 
     echo "Creating Web App..."
-    az webapp create --resource-group $group --plan $plan --name $nameApp --runtime "$runTime"
+    az webapp create --resource-group $group --plan $plan --name $nameApp --runtime "$runTime" --public Enabled --enable-hostname-preview
 }
 
 # Main function
 main() {
     # Set up Azure resources
-    setup_azure_resources 'group003' 'eastus' 'plan003' 'appNameDiego22' 'NODE|18-lts'
+    setup_azure_resources 'group003' 'eastus' 'plan003' 'appNameDiego94' 'NODE|18-lts'
  
-    # Fetch the Subscription ID
-    get_subscription_id
+    # # Fetch the Subscription ID
+    # get_subscription_id
 
-    # Set Contributor
-    config_contributor
+    # # Set Contributor
+    # config_contributor
 
-    #Set OIDC
-    config_OIDC
-
-#   # Fetch the Tenant ID
-#   get_tenant_id
-
-#   # Fetch the Client ID for a specific app
-#   app_name="appmentoria1"
-#   get_client_id "$app_name"
-
-#   echo "All IDs and resources created successfully!"
-#   echo "Subscription ID: $subscriptionId"
-#   echo "Tenant ID: $tenantId"
-#   echo "Client ID: $clientId"
-
-
-
-    # az ad app federated-credential create --id 143bf878-5f76-4280-b04b-642fdd558ca9 \
-    # --parameters "{\"name\":\"GitHubActions\",\"issuer\":\"https://token.actions.githubusercontent.com\",\"subject\":\"repo:diegodevquiroz/node-api-2:environment:Production\",\"audiences\":[\"api://AzureADTokenExchange\"]}"
-        
-    #get_subscription_id
-    #az ad sp create-for-rbac --name "github-action-sp" --role contributor --scopes /subscriptions/$subscriptionId
-
+    # #Set OIDC
+    # config_OIDC
 }
 
 # Execute the main function
