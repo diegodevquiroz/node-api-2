@@ -1,19 +1,10 @@
-# Este flujo de trabajo usa acciones que no GitHub no certifica.
-# Estas las proporcionan entidades terceras y las gobiernan
-# condiciones de servicio, políticas de privacidad y documentación de soporte
-# en línea.
-
-# GitHub recomienda anclar acciones a un SHA de confirmación.
-# Para obtener una versión más reciente, debes actualizar el SHA.
-# También puedes hacer referencia a una etiqueta o rama, pero la acción puede cambiar sin ninguna advertencia.
-
 on:
   push:
     branches:
     - main
 
 env:
-  AZURE_WEBAPP_NAME: backendapi22 # set this to your application's name
+  AZURE_WEBAPP_NAME: backendapi22 #  set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '18.x' # set this to the node version to use
 

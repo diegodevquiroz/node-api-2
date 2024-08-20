@@ -4,7 +4,7 @@ const ClienteValidator = require('../validators/cliente.validator');
 const Responses = require('../constants/responsesMessages');
 
 route.get('/', (req, res) => {
-    res.json({message: 'Ok', date: new Date()})
+    res.json({message: 'Ok', date: new Date(), result: []})
 })
 
 route.post('/cliente-nuevo', async (req, res) => {
