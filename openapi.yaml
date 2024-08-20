@@ -1,0 +1,94 @@
+openapi: 3.0.1
+info:
+  title: Cliente Api
+  description: Documentación de API (https://editor.swagger.io/)
+  version: 1.0.0
+externalDocs:
+  description: descripcion_descripcion
+  url: url_github
+servers:
+- url: "host"
+- url: "host"
+tags:
+- name: Api-Cliente
+  description: Servicios para Listar y Crear Clientes
+
+paths:
+  /cliente/clientes:
+    get:
+      tags:
+      - Api-Cliente
+      summary: Servicios para Listar Clientes
+      operationId: listarClientes
+      responses:
+        '200':
+          description: El servicio respondió correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Se ejecuto correctamente"
+  /cliente/clientes-promedio:
+    get:
+      tags:
+      - Api-Cliente
+      summary: Servicios para Promedio Clientes
+      operationId: PromedioCliente
+      responses:
+        '200':
+          description: El servicio respondió correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Se ejecuto correctamente"
+  /cliente/cliente-nuevo:
+    post:
+      tags:
+      - Api-Cliente
+      summary: Servicios para Promedio Clientes
+      operationId: PromedioCliente
+      requestBody:
+        description: El cuerpo de envio para un request HTTP
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: "diego"
+                apellido:
+                  type: string
+                  example: "quiroz"
+                fechaNacimiento:
+                  type: string
+                  example: "2000-08-08 00:00:00"  
+                                         
+        required: true
+      responses:
+        '200':
+          description: El servicio respondió correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Se ejecuto correctamente"
